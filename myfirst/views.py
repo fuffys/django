@@ -1,22 +1,7 @@
 from django.shortcuts import render
 from myfirst.models import Champion
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
-
-
-
-class ChampionListView(ListView):
-    model = Champion
-
-    context_object_name = 'champions_list'
-
-    template_name = 'champions.html'
-
-def get_queryset(self):
- if 'champion_name' in self.kwargs:
-    return Champion.objects.filter(champions__name=self.kwargs['champion_name']).all()
- else:
-    return Champion.objects.all()
 
 
 
@@ -28,3 +13,13 @@ def index(request):
     }
 
     return render(request, 'index.html', context=context)
+
+class ChampionListView(ListView):
+    model = Champion
+    context_object_name = 'champions_list'
+    template_name = 'champions.html'
+
+class ChampionDetailView(DetailView):
+     model = Champion
+     context_object_name = 'champions_detail'
+     template_name = 'detail.html'

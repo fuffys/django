@@ -2,7 +2,7 @@
 {% block content %}
     <div class="row mt-3 mb-3 bg-warning p-3">
         <div class="col-sm-12">
-            <h2 class="text-center">First 8 Champions</h2>
+            <h2 class="text-center">First 12 Champions</h2>
         </div>
     </div>
     <div class="row">
@@ -15,7 +15,7 @@
                     <div class="card-body">
                         <h4 class="card-title">{{ champion.name }}</h4>
                         <p class="card-text"><strong>Class: </strong>{{ champion.champ_Class }} </p>
-                        <a href="#" class="btn btn-primary">Podrobnosti</a>
+                        <a href="{% url 'champions' champion.pk %}" class="btn btn-primary">Champion INFO</a>
                     </div>
                 </div>
             </div>

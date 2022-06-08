@@ -59,6 +59,7 @@ class Champion(models.Model):
     lanes = models.ManyToManyField(Lanes, help_text='Choose Playable Lanes')
     range_type = models.CharField(max_length=20, choices=RANGE_TYPE, verbose_name='Choose Range Type')
     image = models.ImageField(upload_to=poster_path, blank=True, null=True, verbose_name="Náhledový obrázek")
+    lore = models.CharField(max_length=800, verbose_name='Champion Lore', blank=True, null=True, help_text='Enter Champion\'s Lore')
 
     class Meta:
         ordering = ['name']

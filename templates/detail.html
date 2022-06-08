@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}Champion Details{% endblock %}
+{% block content %}
+    <div class="row mb-3">
+        <div class="col-sm-12 bg-warning">
+            <h2 class="display-4 text-center"></h2>
+        </div>
+    </div>
+
+
+    <div class="col-lg-6 bg-light p-3 " style="text-align: center">
+
+        <h1 class="border-bottom pb-3 text-secondary text-center textuppercase">{{ champions_detail.name }}</h1>
+
+    <div class="row mt-2 mb-3">
+        <div class="card ml-2" style="text-align: center; width: 200px">
+
+            <div class="content">
+                <p>            {% if champions_detail.image %}
+                    <a href="{{ champions_detail.image.url }}">
+                        <img src="{{ champions_detail.image.url }}" class="img-fluid"
+                             alt="Champion Picture">
+                    </a>
+                {% endif %}</p>
+            </div>
+
+
+            <div class="content">
+                <p class="sub-title"><strong>Class: </strong>{{ champions_detail.champ_Class }}</p>
+            </div>
+
+            <div class="content">
+                <p class="sub-title"><strong>Legacy: </strong>
+                    {% for legacy in champions_detail.legacy.all %}
+                        {{ legacy.name }}
+                    {% endfor %}
+                </p>
+            </div>
+
+            <div class="content">
+                <p class="sub-title"><strong>Position: </strong>
+                    {% for lane in champions_detail.lanes.all %}
+                        {{ lane.name }}
+                    {% endfor %}
+                </p>
+            </div>
+
+            <div class="content">
+                <p class="sub-title"><strong>Range type: </strong>{{ champions_detail.range_type }}</p>
+            </div>
+
+
+        </div>
+        <div class="col-lg-8 mb-3 ml-4 mt-5">
+            <h2 class="mb-3 text-center textuppercase">Lore</h2>
+            <div class="row">
+                <div>{{ champions_detail.lore }}</div>
+            </div>
+        </div>
+
+
+    </div>
+
+    </div>
+
+
+{% endblock %}
